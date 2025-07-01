@@ -1,0 +1,8 @@
+**/.git
+**/.gitignore
+**/.idea
+**/README.md
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.log
