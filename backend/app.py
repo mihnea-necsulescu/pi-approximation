@@ -4,6 +4,7 @@ from typing import Iterator
 
 from flask import Flask, request, jsonify, Response
 from flask.typing import ResponseReturnValue
+from flask_cors import CORS
 
 from generator import generate_random_points
 
@@ -11,6 +12,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+CORS(app)
 
 
 def format_sse(data: str, event: str = None) -> str:
@@ -81,9 +83,7 @@ def generate_points() -> ResponseReturnValue:
         mimetype="text/event-stream",
         headers={
             'Cache-Control': 'no-cache',
-            'Connection': 'keep-alive',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Content-Type'
+            'Connection': 'keep-alive'
         }
     )
 
